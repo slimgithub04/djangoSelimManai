@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Conférences</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMT91W4zZZptDDQRmVp6Idb9+RojD7hPpF+ilS" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Helvetica', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            animation: fadeAppear 1.4s ease-out;
+        }
+
+        .conference-fieldset {
+            border: 2px solid #9b59b6;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fafafa;
+            animation: riseIn 0.8s ease-out;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+
+        .conference-fieldset:hover {
+            transform: scale(1.04);
+            box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.18);
+        }
+
+        .conference-title {
+            font-size: 1.5em;
+            color: #34495e;
+            padding: 0 10px;
+        }
+
+        .conference-details {
+            font-size: 1.1em;
+            color: #7f8c8d;
+        }
+
+        .conference-location,
+        .conference-dates,
+        .conference-price,
+        .conference-capacity {
+            color: #2980b9;
+            margin: 5px 0;
+        }
+
+        .conference-price {
+            color: #e67e22;
+        }
+
+        .conference-capacity {
+            color: #c0392b;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #c0392b;
+            font-size: 1.2em;
+            animation: bounceShake 0.9s ease-in-out;
+        }
+
+        @keyframes fadeAppear {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes riseIn {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounceShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            50% { transform: translateX(6px); }
+            75% { transform: translateX(-6px); }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Liste des Conférences</h1>
+
+{% for c in conferenceList %}
+<fieldset class="conference-fieldset">
+    <legend class="conference-title">{{ c.title }}</legend>
+    <p class="conference-details">Description: {{ c.description }}</p>
+    <p class="conference-location"><strong>Le Lieu:</strong> {{ c.location }}</p>
+    <p class="conference-dates"><strong>Les Dates:</strong> Du {{ c.start_date }} au {{ c.end_date }}</p>
+    <p class="conference-price"><strong>Le Prix:</strong> {{ c.price }} Dt</p>
+    <p class="conference-capacity"><strong>La Capacité:</strong> {{ c.capacity }} participants</p>
+</fieldset>
+{% empty %}
+<p class="empty-message">La liste des conférences est vide</p>
+{% endfor %}
+
+</body>
+</html>

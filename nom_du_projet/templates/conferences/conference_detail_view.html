@@ -1,0 +1,38 @@
+<div style="max-width: 800px; margin: 50px auto; padding: 20px; border: 2px solid #8e44ad; border-radius: 12px; background-color: #f7f9f9; box-shadow: 0px 5px 10px rgba(0,0,0,0.15); animation: slideIn 0.7s ease-out;">
+    <h1 style="text-align: center; color: #34495e; font-size: 2.1em; margin-bottom: 18px;">{{ conferences.title }}</h1>
+    
+    <div style="text-align: center; margin-bottom: 18px;">
+        <span style="font-size: 1.15em; color: #95a5a6;">{{ conferences.description }}</span>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 18px;">
+        <div>
+            <p style="font-size: 1.05em; color: #1abc9c;"><strong>Lieu:</strong> {{ conferences.location }}</p>
+            <p style="font-size: 1.05em; color: #27ae60;"><strong>Date début:</strong> {{ conferences.start_date }}</p>
+            <p style="font-size: 1.05em; color: #3cbce7;"><strong>Date fin:</strong> {{ conferences.end_date }}</p>
+        </div>
+        <div>
+            <p style="font-size: 1.05em; color: #c0392b;"><strong>Prix:</strong> {{ conferences.price }} €</p>
+            <p style="font-size: 1.05em; color: #f39c12;"><strong>Capacité:</strong> {{ conferences.capacity }} participants</p>
+        </div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="/conferences" style="text-decoration: none; background-color: #8e44ad; color: white; padding: 10px 22px; border-radius: 4px; box-shadow: 0px 3px 6px rgba(0,0,0,0.1); transition: background-color 0.3s ease, transform 0.3s ease;">
+            Retour à la liste des conférences
+        </a>
+    </div>
+</div>
+
+<!-- CSS inline animations -->
+<style>
+    @keyframes slideIn {
+        0% { opacity: 0; transform: translateY(40px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    a:hover {
+        background-color: #96d51f;
+        transform: translateY(-3px);
+    }
+</style>

@@ -1,0 +1,49 @@
+<h1 style="text-align: center; font-family: 'Verdana', sans-serif; color: #2c3e50; animation: fadeSlide 1.3s ease-out;">
+    Liste des Conférences
+</h1>
+
+{% for c in conferences %}
+<fieldset style="border: 2px solid #8e44ad; border-radius: 12px; padding: 18px; margin-bottom: 18px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease-out, box-shadow 0.2s ease-out; background-color: #f9f9f9; animation: riseUp 0.6s ease-out;">
+    <legend style="font-size: 1.4em; color: #34495e; padding: 0 12px;">
+        <a href="{% url 'conference_detail' c.id %}" style="color: inherit; text-decoration: none;">{{ c.title }}</a>
+    </legend>
+    <p style="font-size: 1em; color: #7b7d7d;">Description: {{ c.description }}</p>
+    <p style="color: #1abc9c;"><strong>Le Lieu:</strong> {{ c.location }}</p>
+    <p style="color: #27ae60;"><strong>Dates:</strong> Du {{ c.start_date }} au {{ c.end_date }}</p>
+    <p style="color: #e67e22;"><strong>Prix:</strong> {{ c.price }} Dt</p>
+    <p style="color: #c0392b;"><strong>Capacité:</strong> {{ c.capacity }} participants</p>
+</fieldset>
+{% empty %}
+<p style="text-align: center; color: #c0392b; font-size: 1.1em; animation: shakeText 0.8s ease-in-out;">
+    La liste des conférences est vide
+</p>
+{% endfor %}
+
+<!-- CSS inline animations -->
+<style>
+    @keyframes fadeSlide {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes riseUp {
+        0% { transform: translateY(60px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes shakeText {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-6px); }
+        50% { transform: translateX(6px); }
+        75% { transform: translateX(-6px); }
+    }
+
+    fieldset:hover {
+        transform: scale(1.03);
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    a:hover {
+        color: #7d3c98;
+    }
+</style>
